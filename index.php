@@ -7,24 +7,38 @@
  	Twig_Autoloader::register();  
 	
  	$app = new \Slim\Slim();  
+
+ 	// Use for view the themes
 	
- 	$app->get( '/hello/:name', function ( $name ) {  
+ 	$app->get( '/draws/:id', function ( $id ) {  
 
       	RedBean::setup( 'mysql:host=localhost;dbname=test', 'root', '' );  
 
-      	$loader = new Twig_Loader_Filesystem('templates');  
+      	$loader = new Twig_Loader_Filesystem('templates/html');  
       	$twig = new Twig_Environment( $loader, array(  
       	  	//'cache' => 'cache',  
       	));  
 
        	$row = RedBean::getRow( 
        			'SELECT * FROM articles WHERE id = :id' 
-     		,	array(':id'=>1)   
+     		,	array( ':id' => $id )   
    		);  
 
       	echo $twig->render( 'test.html', array( 'book_title' => $row[ 'title' ] ) );  
 
- });  
+ 	});  
+
+ 	// Goto profile
+
+ 	$app->get( '/profile', function () {
+
+ 		$loader = new Twig_Loader_Filesystem('app/views');  
+      	$twig = new Twig_Environment( $loader, array(  
+      	  	//'cache' => 'cache',  
+      	));  
+
+      	echo $twig->render( 'profile.php', array() );
+ 	});
 
  $app->run();  
 
