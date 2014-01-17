@@ -8,6 +8,10 @@
 	
  	$app = new \Slim\Slim();  
 
+ 	$app->get('/', function () use ($app) {
+	    $app->render('templates/html/test.html'); // <-- SUCCESS
+	});
+
  	// Use for view the themes
 	
  	$app->get( '/draws/:id', function ( $id ) {  
