@@ -1,0 +1,17 @@
+/*
+Theme Name: Pulsar
+Theme URI: http://pulsarthemes.com/themes/pulsar
+Author: Pulsar Themes
+Version: 0.5
+Author URI: http://pulsarthemes.com/about/danjavia
+Description: Wordpress Theme Created Under GPL Enterprise Licence for the Fundacion Sexto Sentido.
+License: Enterprise License.
+License URI: license.txt
+Tags: wordpress-themes, light, white, one-column, two-columns, left-sidebar, right-sidebar, flexible-width, custom-backgroud, custom-header, custom-menu, featured-images, flexible-header, microformats, post-formats, rtl-language-support, threaded-comments, translation-ready
+This theme, like WordPress, is licensed under the GPL.
+*/
+
+@import url(kickstart/kickstart.css?v=1);
+/*@import url(assets/css/bootstrap/bootstrap.css?v=1);*/
+@import url(http://fonts.googleapis.com/css?family=Marcellus);
+@import url(http://fonts.googleapis.com/css?family=Marcellus|Calligraffitti|Indie+Flower);

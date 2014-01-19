@@ -1,6 +1,6 @@
 <?php
-Layout::input($title, 'string');
-Layout::input($body, 'Block');
+	Layout::input( $title, 'string' );
+	Layout::input( $body, 'Block' );
 ?>
 <html>
 	<head>

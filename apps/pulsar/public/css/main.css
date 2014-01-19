@@ -1,0 +1,12 @@
+body {
+	background: rgb( 0,115,186 );
+}
+.cntdwn {
+	/*background-color: white;*/
+	color: #fefefe;
+	font-size: 25px;
+	font-family: 'Marcellus', serif;
+	left: 33%;
+	position: fixed;
+	top: 48%;
+}

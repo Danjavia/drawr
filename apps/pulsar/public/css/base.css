@@ -1,0 +1,8 @@
+input[type="submit"] {
+	outline: none;
+}
+
+.danger {
+	border:1px #a00 solid !important;
+	outline-color: #a00;
+}

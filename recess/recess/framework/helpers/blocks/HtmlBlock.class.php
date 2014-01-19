@@ -44,15 +44,15 @@ class HtmlBlock extends Block {
 		return $this->contents;
 	}
 	
-	public function set($contents) {
+	public function set( $contents ) {
 		$this->contents = $contents;
 	}
 	
-	public function append($contents) {
+	public function append( $contents ) {
 		$this->contents .= $contents;
 	}
 	
-	public function prepend($contents) {
+	public function prepend( $contents ) {
 		$this->contents = $contents . $this->contents;
 	}
 }
