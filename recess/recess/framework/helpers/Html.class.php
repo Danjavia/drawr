@@ -83,6 +83,20 @@ class Html extends AbstractHelper {
 	}
 
 	/**
+	 * Creates a stylesheet link.
+	 *
+	 * @param   string|array  filename, or array of filenames to match to array of medias
+	 * @param   string|array  media type of stylesheet, or array to match filenames
+	 * @return  string
+	 */
+	public static function less($style, $media = FALSE) {
+		if(is_array($media)) {
+			$media = implode(', ', $media);
+		}
+		return html::link($style, 'stylesheet', 'text/less', '.less', $media);
+	}
+
+	/**
 	 * Creates a link tag.
 	 *
 	 * @param   string|array  filename

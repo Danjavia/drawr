@@ -292,7 +292,7 @@ body {
  */
 
 .navbar-top {
-	background: url(../images/pattern3.png), rgba(25,25,25,0.98);
+	background: url(../img/pattern3.png), rgba(25,25,25,0.98);
 	-webkit-box-shadow: 0 3px 5px -3px #575757;
 	-moz-box-shadow: 0 3px 5px -3px #575757;
 	box-shadow: 0 3px 5px -3px #575757;
@@ -308,7 +308,7 @@ body {
  */
 
 .left-panel {
-	background: url(../images/pattern3.png), rgba(25,25,25,0.75);
+	background: url(../img/pattern3.png), rgba(25,25,25,0.75);
 	-webkit-box-shadow: 5px 0 5px -3px #797979;
 	-moz-box-shadow: 5px 0 5px -3px #797979;
 	box-shadow: 5px 0 5px -3px #797979;
@@ -354,7 +354,7 @@ body {
  */
 
 .tool-panel{
-	background: url(../images/pattern3.png), rgba(25,25,25,0.75);
+	background: url(../img/pattern3.png), rgba(25,25,25,0.75);
 	/*-webkit-box-shadow: 5px 0 5px -3px #797979;
 	-moz-box-shadow: 5px 0 5px -3px #797979;
 	box-shadow: 5px 0 5px -3px #797979;*/
@@ -494,7 +494,7 @@ video.box {
  */
 
 .layout-manager {
-	background: url(../images/pattern3.png), rgba(25,25,25,0.75);
+	background: url(../img/pattern3.png), rgba(25,25,25,0.75);
 	/*-webkit-box-shadow: -5px 0 5px -3px #797979;
 	-moz-box-shadow: -5px 0 5px -3px #797979;
 	box-shadow: -5px 0 5px -3px #797979;*/
@@ -513,7 +513,7 @@ video.box {
  */
 
 .layout-manager .layouts {
-	background: url(../images/pattern3.png), rgba(25,25,25,0.75);
+	background: url(../img/pattern3.png), rgba(25,25,25,0.75);
 	bottom:0;
 	border-top: 2px rgb( 0,115,186 ) solid;
 	height: 350px;	
@@ -529,7 +529,7 @@ video.box {
  */
 
 .viewer-manager {
-	background: url(../images/pattern3.png), rgba(25,25,25,0.95);
+	background: url(../img/pattern3.png), rgba(25,25,25,0.95);
 	border-top: 2px rgb( 0,115,186 ) solid;
 	bottom:0;
 	display: block;

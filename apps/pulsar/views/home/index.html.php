@@ -6,8 +6,14 @@
 
 <?php Part::draw( 'parts/header' ); ?>
 
+	<span class="cntdwn"></span>
 
-	<h1>Welcome to pulsar</h1>
+	<section class="features">
+			
+		<div class="feature">
+		
+		</div>
 
-
+	</section>
+	
 <?php Part::draw( 'parts/footer' ); ?>	

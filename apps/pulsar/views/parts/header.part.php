@@ -34,6 +34,9 @@
 		<?php echo Html::css( 'style' ); ?>
 		<?php echo Html::css( 'main' ); ?>
 		<!-- scripts -->
-		<?php ; ?>
+		<?php Part::draw( 'parts/loadScripts' ); ?>
+		<?php Part::draw( 'parts/analytics' ); ?>
 	</head>
 	<body>
+		<div class="wrapper-content">
+			<section class="content-block">

@@ -18,7 +18,6 @@ function ev( event ) {
 	        }
 
 	    ,	init: function() {
-	    		console.log( 'si va' )
 	    		var TargetDate = "03/01/2014 12:00 AM"
 				,	CountActive = true
 				,	CountStepper = -1
