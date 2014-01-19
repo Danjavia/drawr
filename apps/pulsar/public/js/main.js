@@ -8,6 +8,7 @@ function ev( event ) {
 
 	        initialize: function() {
 
+	        	History.Adapter.bind( window, 'statechange', this.buildBreadcrumb );
 	        	this.foundation; // Adding foundation to the project
 
 				i = 0; // Valor dinumeracion div inicial
@@ -220,6 +221,8 @@ function ev( event ) {
 		    		}
 
 		    		jQuery( '.zoom input' ).val( Math.ceil( drawZone.css( 'zoom' ) * 100 ) );
+
+		    		History.pushState( {}, null, '/draw/' + drawName ); // window.location.origin before '/'
 
 	    		},1500);
 	    		

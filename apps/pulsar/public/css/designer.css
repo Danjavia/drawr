@@ -447,7 +447,7 @@ body {
 
 .draw-zone-box {
 	background: transparent;
-	height: calc( 100% - 85px );
+	height: calc( 100% - 95px );
 	left: 45px;
 	overflow: auto;
 	position: fixed;
@@ -534,7 +534,7 @@ video.box {
 	bottom:0;
 	display: block;
 	max-height: 44px;
-	height: 35px;
+	height: 50px;
 	padding:3px 5px;
 	position: fixed;
 	left:0;

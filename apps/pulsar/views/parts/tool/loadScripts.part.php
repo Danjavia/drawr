@@ -9,6 +9,7 @@
 		,	'pep' => 'jquery.pep'
 		,	'context' => 'context'
 		,	'mousetrap' => 'mousetrap'
+		,	'history' => 'jquery.history'
 		// ,	'foundation' => 'foundation.min'
 	);
 	
