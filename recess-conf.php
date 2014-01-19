@@ -29,12 +29,12 @@
 
 	RecessConf::$defaultDatabase = array(	
 			//'sqlite:' . $_ENV['dir.bootstrap'] . 'data/sqlite/default.db'
-			'mysql:host=localhost;dbname=u235107806_pulse', 'root', ''
+			'mysql:host=localhost;dbname=u884906623_drawr', 'u884906623_drawr', 'DAN55000'
 	);
 
 	RecessConf::$namedDatabases = array( 	
 			// 'nameFoo' => array('sqlite:' . $_ENV['dir.bootstrap'] . 'data/sqlite/default.db')
-		// 'nameBar' => array('mysql:host=localhost;dbname=recess', 'username', 'password')
+			'drawr' => array( 'mysql:host=localhost;dbname=u884906623_drawr', 'u884906623_drawr', 'DAN55000' )
 		// 'nameDrawr' => array( 'mysql:host=localhost;dbname=drawr', 'root', '' )
 	);
 

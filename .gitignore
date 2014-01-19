@@ -6,3 +6,4 @@
 recess/temp/compiled/*
 recess/temp/*.*
 apps/welcome
+node_modules/
