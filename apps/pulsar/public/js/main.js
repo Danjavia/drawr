@@ -386,6 +386,11 @@ function ev( event ) {
 								text: 'Remove'
 							,	action: this.removeBox
 						}	
+
+					,	{
+								text: 'Set As'
+							,	action: this.removeBox
+						}	
 				]);
 			}
 
