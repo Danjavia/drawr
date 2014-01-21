@@ -31,10 +31,9 @@
 		<meta name="HandheldFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<!-- icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) -->
 		<link rel="icon" href="<?php echo $app->assetUrl; ?>img/favicon.png">
 		<!--[if IE]>
-			<link rel="shortcut icon" href="img/favicon.ico">
+			<link rel="shortcut icon" href="<?php echo $app->assetUrl; ?>img/favicon.ico">
 		<![endif]-->
 		<!-- styles -->
 		<?php echo Html::css( 'style' ); ?>

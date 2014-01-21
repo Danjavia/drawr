@@ -34,7 +34,7 @@
 		<!-- icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) -->
 		<link rel="icon" href="<?php echo $app->assetUrl; ?>img/favicon.png">
 		<!--[if IE]>
-			<link rel="shortcut icon" href="img/favicon.ico">
+			<link rel="shortcut icon" href="<?php echo $app->assetUrl; ?>img/favicon.ico">
 		<![endif]-->
 		<!-- styles -->
 		<?php echo Html::css( 'normalize' ); ?>

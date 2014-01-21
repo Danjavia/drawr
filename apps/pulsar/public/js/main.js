@@ -12,7 +12,7 @@ function ev( event ) {
 	        	this.foundation; // Adding foundation to the project
 
 				i = 0; // Valor dinumeracion div inicial
-				pin = 0;
+				sessionStorage.pin = 0;
 				drawZone = document.getElementById( 'draw-zone' ); 
 				// this.drawZone.onmousedown = drawBox;
 
@@ -32,7 +32,7 @@ function ev( event ) {
 				Mousetrap.bind( [ 'ctrl+x' ], this.cutBox );
 				Mousetrap.bind( [ 'ctrl+v' ], this.pasteBox );
 				Mousetrap.bind( [ 'ctrl+alt+c' ], this.setDrawer );
-				Mousetrap.bind( [ 'ctrl++' ], this.zoomPlus );
+				Mousetrap.bind( [ 'ctrl+1' ], this.zoomPlus );
 
 				/* Long polling */
 				// Long Polling (Recommened Technique - Creates An Open Connection To Server ∴ Fast)
@@ -70,7 +70,7 @@ function ev( event ) {
 				xc = realPosition.left;
 
 		        if ( event.which == 1 ) {
-					if ( pin == 0 ) { 
+					if ( sessionStorage.pin == 0 ) { 
 						var x = event.pageX - xc;
 						var y = event.pageY - yc;
 						switch ( sessionStorage.boxType ) {
@@ -79,8 +79,8 @@ function ev( event ) {
 								div.src = 'http://fc05.deviantart.net/fs6/i/2005/100/1/0/Master_Universe_by_ANTIFAN_REAL.jpg';
 							break;
 							case 'iframe':
-								var div = document.createElement( 'iframe' );
-								div.src = '//www.youtube.com/embed/JmcA9LIIXWw';
+								var div = document.createElement( 'div' );
+								jQuery( div ).addClass( 'embedded-video' );
 							break;
 							case 'video':
 								var div = document.createElement( 'video' );
@@ -103,9 +103,12 @@ function ev( event ) {
 							div.style.width = ( event.pageX - xc - x ) + 'px';
 							div.style.height = ( event.pageY - yc - y ) + 'px';
 						}
-						pin = 1;
+						drawZone.onmouseup = function() {
+							sessionStorage.pin = 1;
+							drawZone.onmousemove = false;
+						}
 					}else{
-						pin = 0;
+						// sessionStorage.pin = 0;
 						drawZone.onmousemove = false;
 						drawZone.onclick = false;
 					}
@@ -123,6 +126,19 @@ function ev( event ) {
 					// pin = 1;
 					jQuery( '.box:not(' + sessionStorage.selector + ')').removeClass('selected');
 					jQuery( this ).addClass('selected');
+
+					jQuery.pep.toggleAll( true );
+					var el = jQuery( '.selected' );
+					el.css({
+						cursor: 'move'
+					});
+					el.pep({
+						droppable:   '.box',
+					  	// drag: function(ev, obj){
+					  	// }
+					});
+
+					// view the tool
 					jQuery( '.colors .sub-tools' ).show();
 				});
 
@@ -130,6 +146,12 @@ function ev( event ) {
 				
 				Mousetrap.bind( [ 'enter' ], function() {
 					// pin = 0;
+					jQuery( '.box' ).removeClass('selected').css({ cursor: 'default' });
+					jQuery.pep.toggleAll( false );
+					jQuery( '.colors .sub-tools' ).hide();
+				});
+
+				jQuery( '.selected' ).dblclick( function () {
 					jQuery( '.box' ).removeClass('selected').css({ cursor: 'default' });
 					jQuery.pep.toggleAll( false );
 					jQuery( '.colors .sub-tools' ).hide();
@@ -142,7 +164,7 @@ function ev( event ) {
 	    , 	noDrawBox: function() {
 	    		console.log( 'noDrawBox' );
 	    		drawZone.onclick = false;
-	    		drawZone.onmousemove = false;
+	    		drawZone.onmousedown = false;
 	    	}
 
 	        /**
@@ -222,7 +244,7 @@ function ev( event ) {
 
 		    		jQuery( '.zoom input' ).val( Math.ceil( drawZone.css( 'zoom' ) * 100 ) );
 
-		    		History.pushState( {}, null, '/draw/' + drawName ); // window.location.origin before '/'
+		    		// History.pushState( {}, null, '/draw/' + drawName ); // window.location.origin before '/'
 
 	    		},1500);
 	    		
@@ -239,8 +261,9 @@ function ev( event ) {
 	         * New Box
 	         */
 	    , 	newBox: function() {
+				sessionStorage.pin = 0;
 				sessionStorage.boxType = 'box';
-				drawZone.onclick = this.drawBox;
+				drawZone.onmousedown = this.drawBox;
 			}
 
 	        /**
@@ -302,7 +325,7 @@ function ev( event ) {
 			 */
 		,	moveBox: function ( e ) {
 				e.preventDefault();
-				this.noDrawBox;
+				// this.noDrawBox;
 				jQuery.pep.toggleAll( true );
 				var el = jQuery( '.selected' );
 				el.css({
@@ -425,7 +448,7 @@ function ev( event ) {
 			 */
 		,	closeModal: function() {
 
-				jQuery( '.pulsar-modal' ).foundation('reveal', 'close');
+				jQuery( '.pulsar-modal' ).foundation( 'reveal', 'close' );
 
 			}
 
@@ -433,8 +456,10 @@ function ev( event ) {
 			 * zoom plus
 			 */
 		,	zoomPlus: function() {
-				jQuery( '.pulsar-modal' ).foundation('reveal', 'close');
-
+				jQuery( '.zoom input' ).val( 100 );
+				jQuery( '.draw-zone' ).css({
+			    		zoom: 100 + '%'
+			    });
 			}
 
 		, 	zoom: function( e ) {
