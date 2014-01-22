@@ -56,6 +56,7 @@ function ev( event ) {
 	            ,	'click .newDraw': 'newDrawModal'	
 	            ,	'click .close-reveal-modal': 'closeModal'
 	            ,	'change .zoom input': 'zoom'
+	            ,	'click .icon-signout': 'setToImg'
 	        }
 
 	        /**
@@ -236,13 +237,17 @@ function ev( event ) {
 		    			,	zoom: '100%'
 		    		}).show();
 
-		    		if( drawWidth > ( winWidth - 250 ) || drawHeight > ( winHeight - 50 ) ) {
-		    			drawZone.css({ 
-		    				zoom: '66%'
-		    			});
-		    		}
+		    		// if( drawWidth > ( winWidth - 250 ) || drawHeight > ( winHeight - 50 ) ) {
+		    		// 	drawZone.css({ 
+		    		// 		zoom: '66%'
+		    		// 	});
+		    		// }
 
 		    		jQuery( '.zoom input' ).val( Math.ceil( drawZone.css( 'zoom' ) * 100 ) );
+
+		    		// Stablish name for draw
+
+		    		sessionStorage.drawname = drawName;
 
 		    		// History.pushState( {}, null, '/draw/' + drawName ); // window.location.origin before '/'
 
@@ -389,15 +394,81 @@ function ev( event ) {
 
 					,	{
 								text: 'Set As'
-							,	action: this.removeBox
+							,	subMenu: 	[
+										{ header: 'Set this box as' }
+
+									,	{
+												text: 'Image'
+											,	action: this.setToImg
+										}
+
+									,	{
+												text: 'Slider'
+											,	action: this.setToSlide
+										}	
+
+									,	{
+												text: 'Native Html5 video'
+											,	action: this.setToVideo
+										}
+
+									,	{
+												text: 'embedded-video'
+											,	action: this.setToEmbed
+										}	
+
+								]
 						}	
 				]);
 			}
 
 			/**
+			 * SetToImg
+			 * This function prepares the box to been specific type
+			 */
+		,	setToImg: function () {
+				html2canvas(  document.getElementById( "draw-zone" ), {
+				    onrendered: function( canvas ) {
+				    	canvas.getContext("2d");
+				    	// draw to canvas...
+						canvas.toBlob( function ( blob ) {
+						    saveAs( blob, sessionStorage.drawname + ".png" );
+						});
+				    }
+				});
+			}
+
+			/**
+			 * SetToSlide
+			 * This function prepares the box to been specific type
+			 */
+		,	setToSlide: function () {
+
+				var blob = new Blob( [ sessionStorage.theme ], { type: "text/html;charset=utf-8" } );
+				saveAs( blob, "index.html" );
+				console.log( 'se hizob' );
+			}
+
+			/**
+			 * SetToVideo
+			 * This function prepares the box to been specific type
+			 */
+		,	setToVideo: function () {
+				console.log( 'se hizoc' );
+			}
+
+			/**
+			 * SetToEmbed
+			 * This function prepares the box to been specific type
+			 */
+		,	setToEmbed: function () {
+				console.log( 'se hizod' );
+			}
+
+			/**
 			 * [copyBox Copy the selected element to the clipboard]
 			 */
-		,	copyBox: function() {
+		,	copyBox: function () {
 
 				var box = sessionStorage.selector;
 

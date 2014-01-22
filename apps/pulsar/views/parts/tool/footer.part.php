@@ -57,4 +57,5 @@
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
 	</body>
+	<?php Part::draw( 'parts/tool/loadScripts' ); ?>
 </html> <!-- end page. what a ride! -->

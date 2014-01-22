@@ -44,7 +44,7 @@
 		<?php echo Html::css( 'base' ); ?>
 		<?php echo Html::css( 'font-awesome/css/font-awesome' ); ?>
 		<!-- scripts -->
-		<?php Part::draw( 'parts/tool/loadScripts' ); ?>
+		<?php echo Html::js( 'jquery' ); ?>
 		<?php Part::draw( 'parts/analytics' ); ?>
 	</head>
 	<body>

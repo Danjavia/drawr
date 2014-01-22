@@ -1,15 +1,18 @@
 <?php 
 
 	$scripts = array(
-			'jquery' => 'jquery'
-		,	'less' => 'less-1.5.0.min'
-		,	'gillie' => 'gillie'
+			// 'jquery' => 'jquery'
+			'gillie' => 'gillie'
 		,	'modernizr' => 'vendor/custom.modernizr'
-		,	'main' => 'main'
 		,	'pep' => 'jquery.pep'
 		,	'context' => 'context'
 		,	'mousetrap' => 'mousetrap'
 		,	'history' => 'jquery.history'
+		,	'blob' => 'helpers/Blob'
+		,	'toblob' => 'helpers/toBlob'
+		,	'saver' => 'helpers/FileSaver'
+		,	'tocanvas' => 'helpers/html2canvas'
+		,	'main' => 'main'
 		// ,	'foundation' => 'foundation.min'
 	);
 	
