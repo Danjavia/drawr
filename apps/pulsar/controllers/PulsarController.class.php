@@ -2,6 +2,7 @@
 
 	Library::import( 'recess.framework.controllers.Controller' );
 	Library::import( 'pulsar.models.PulsarModel' );
+	Library::import( 'pulsar.lib.eden' );
 
 	/**
 	 * !RespondsWith Layouts

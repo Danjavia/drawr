@@ -12,6 +12,12 @@
 		,	'toblob' => 'helpers/toBlob'
 		,	'saver' => 'helpers/FileSaver'
 		,	'tocanvas' => 'helpers/html2canvas'
+		// ,	'zipinflate' => 'helpers/jszip-inflate'
+		// ,	'zipload' => 'helpers/jszip-load'
+		// ,	'jszip' => 'helpers/jszip'
+		,	'raphael' => 'raphael-min'
+		,	'easing' => 'jquery.easing'
+		,	'iview' => 'iview.pack'
 		,	'main' => 'main'
 		// ,	'foundation' => 'foundation.min'
 	);

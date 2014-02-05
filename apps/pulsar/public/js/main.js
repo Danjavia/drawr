@@ -11,6 +11,7 @@ function ev( event ) {
 	        	History.Adapter.bind( window, 'statechange', this.buildBreadcrumb );
 	        	this.foundation; // Adding foundation to the project
 
+
 				i = 0; // Valor dinumeracion div inicial
 				sessionStorage.pin = 0;
 				drawZone = document.getElementById( 'draw-zone' ); 
@@ -42,7 +43,15 @@ function ev( event ) {
 				//         salesGauge.setValue(data.value);
 				//     }, dataType: "json", complete: poll, timeout: 30000 });
 				// })();
-
+				// 
+				// var imgData = "R0lGODdhBQAFAIACAAAAAP/eACwAAAAABQAFAAACCIwPkWerClIBADs=";
+				// var zip = new JSZip();
+				// zip.file("Hello.txt", "Hello World\n");
+				// var img = zip.folder("images");
+				// img.file("smile.gif", imgData, {base64: true});
+				// var content = zip.generate();
+				// location.href="data:application/zip;base64,"+content;
+      
 	        }
 
 	    ,   events: {
@@ -427,6 +436,13 @@ function ev( event ) {
 			 * This function prepares the box to been specific type
 			 */
 		,	setToImg: function () {
+
+				var src = 'http://placehold.it/'
+				,	img = '<img src="' + src + jQuery( '.selected' ).width() + 'x' + jQuery( '.selected' ).height() + '" class="img-embed" alt="" />'
+
+				jQuery( '.selected' ).append( img );
+
+				// Create image from draw zone object
 				html2canvas(  document.getElementById( "draw-zone" ), {
 				    onrendered: function( canvas ) {
 				    	canvas.getContext("2d");
@@ -435,18 +451,41 @@ function ev( event ) {
 						    saveAs( blob, sessionStorage.drawname + ".png" );
 						});
 				    }
-				});
+				}); // Don't delete
 			}
 
 			/**
 			 * SetToSlide
 			 * This function prepares the box to been specific type
 			 */
-		,	setToSlide: function () {
+		,	setToSlide: function ( e ) {
 
-				var blob = new Blob( [ sessionStorage.theme ], { type: "text/html;charset=utf-8" } );
-				saveAs( blob, "index.html" );
-				console.log( 'se hizob' );
+				e.preventDefault();
+
+				var src = 'http://placehold.it/'
+				,	img = '<img src="' + src + jQuery( '.selected' ).width() + 'x' + jQuery( '.selected' ).height() + '" class="img-embed" alt="" />'
+				,	iview = jQuery( '<div class="iview"/>' )
+				,	sld1 = jQuery( '<div data-iview:thumbnail="apps/pulsar/public/img/fnd1.jpg" data-iview:image="apps/pulsar/public/img/fnd1.jpg"/>' )
+				,	caption1 = '<div class="iview-caption" data-x="0" data-y="0" data-width="400" data-height="300" data-transition="wipeRight" data-speed="700"> <h3>The Responsive Caption</h3> This is the product that you <b><i>all have been waiting for</b></i>!<br><br>Customize this slider with just a little HTML and CSS to your very needs. Give each slider some captions to transport your message.<br><br> All in all it works on every browser (including IE6 / 7 / 8) and on iOS and Android devices! </div>'
+				,	sld2 = jQuery( '<div data-iview:thumbnail="apps/pulsar/public/img/fnd2.jpg" data-iview:image="apps/pulsar/public/img/fnd2.jpg"/>' )
+				,	caption2 = '<div class="iview-caption" data-x="70" data-y="70" data-transition="expandLeft">Caption Description</div>';
+
+				// Set the slider
+				sld1.append( caption1 );
+				sld2.append( caption2 );
+
+				// Append to iview
+				iview.append( sld1 ).append( sld2 );
+
+				// Append to selected div
+				jQuery( '.selected' ).append( iview );
+
+				jQuery( '.iview' ).iView();
+
+				// var blob = new Blob( [ sessionStorage.theme ], { type: "text/html;charset=utf-8" } );
+
+				// Set the savers
+				// saveAs( blob, "index.html" );
 			}
 
 			/**
