@@ -17,7 +17,8 @@
 		// ,	'jszip' => 'helpers/jszip'
 		,	'raphael' => 'raphael-min'
 		,	'easing' => 'jquery.easing'
-		,	'iview' => 'iview.pack'
+		// ,	'iviewPack' => 'iview.pack'
+		,	'iview' => 'iview'
 		,	'main' => 'main'
 		// ,	'foundation' => 'foundation.min'
 	);

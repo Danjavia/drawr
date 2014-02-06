@@ -101,6 +101,7 @@ function ev( event ) {
 						}
 						jQuery( div ).addClass( 'box pulsar-zone-' + i );
 						jQuery( div ).attr( 'boxname', '.pulsar-zone-' + i );
+						jQuery( div ).attr( 'id', 'pulsar-zone-' + i );
 						jQuery( div ).attr( 'boxnumber', i );
 						i++;
 						div.style.position = 'absolute';
@@ -463,14 +464,19 @@ function ev( event ) {
 				e.preventDefault();
 
 				var src = 'http://placehold.it/'
+				,	id = jQuery( '.selected' ).attr( 'id' )
 				,	img = '<img src="' + src + jQuery( '.selected' ).width() + 'x' + jQuery( '.selected' ).height() + '" class="img-embed" alt="" />'
-				,	iview = jQuery( '<div class="iview"/>' )
+				,	iview = jQuery( '<div id="iview-' + id + '"/>' )
 				,	sld1 = jQuery( '<div data-iview:thumbnail="apps/pulsar/public/img/fnd1.jpg" data-iview:image="apps/pulsar/public/img/fnd1.jpg"/>' )
 				,	caption1 = '<div class="iview-caption" data-x="0" data-y="0" data-width="400" data-height="300" data-transition="wipeRight" data-speed="700"> <h3>The Responsive Caption</h3> This is the product that you <b><i>all have been waiting for</b></i>!<br><br>Customize this slider with just a little HTML and CSS to your very needs. Give each slider some captions to transport your message.<br><br> All in all it works on every browser (including IE6 / 7 / 8) and on iOS and Android devices! </div>'
 				,	sld2 = jQuery( '<div data-iview:thumbnail="apps/pulsar/public/img/fnd2.jpg" data-iview:image="apps/pulsar/public/img/fnd2.jpg"/>' )
 				,	caption2 = '<div class="iview-caption" data-x="70" data-y="70" data-transition="expandLeft">Caption Description</div>';
 
-				// Set the slider
+				// Set the slider size
+				iview.width( jQuery( '.selected' ).width() );
+				iview.height( jQuery( '.selected' ).height() );
+
+				// Set the slider slides
 				sld1.append( caption1 );
 				sld2.append( caption2 );
 
@@ -480,7 +486,7 @@ function ev( event ) {
 				// Append to selected div
 				jQuery( '.selected' ).append( iview );
 
-				jQuery( '.iview' ).iView();
+				jQuery( '#' + id ).find( '#iview-' + id ).iView();	
 
 				// var blob = new Blob( [ sessionStorage.theme ], { type: "text/html;charset=utf-8" } );
 
