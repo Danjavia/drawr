@@ -39,6 +39,7 @@
 		<!-- styles -->
 		<?php echo Html::css( 'normalize' ); ?>
 		<?php echo Html::css( 'foundation' ); ?>
+		<?php echo Html::css( 'colorpicker' ); ?>
 		<?php echo Html::css( 'designer' ); ?>
 		<?php echo Html::css( 'context.standalone' ); ?>
 		<?php echo Html::css( 'base' ); ?>

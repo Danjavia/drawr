@@ -16,10 +16,10 @@
 				<span class="icon-pencil"></span>
 				<ul class="sub-tools">
 					<li class="draw-container"><span class="icon-check-empty" title="New Block"></span></li>
-					<li class="draw-image"><span class="icon-picture" title="New Image"></span></li>
+					<!-- <li class="draw-image"><span class="icon-picture" title="New Image"></span></li>
 					<li class="draw-film"><span class="icon-film" title="New Video Box"></span></li>
 					<li class="draw-youtube"><span class="icon-youtube-play" title="New youtube Box"></span></li>
-					<li class="draw-text"><span class="icon-font" title="New text"></span></li>
+					<li class="draw-text"><span class="icon-font" title="New text"></span></li> -->
 				</ul>
 			</li><!-- 
 			<li class="box-tool colors" title="Box style">
@@ -46,8 +46,15 @@
 
 	<!-- Layout Manager -->
 	<div class="layout-manager">
+		<div class="layer-actions">
+			<div class="color-set">
+				
+			</div>
+		</div>
 		<div class="layouts" modal="newDraw">
-			
+			<div class="tree">
+				
+			</div>
 		</div>
 	</div>
 

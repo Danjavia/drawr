@@ -21,6 +21,7 @@ function ev( event ) {
             	this.contextMenu();
             	this.shortcuts;
             	this.themeActions;
+            	// this.sortLayer();
 
 				/**
 				 * Shortcuts
@@ -69,11 +70,44 @@ function ev( event ) {
 	        }
 
 	        /**
+	         * [sortLayer sort de layer into the draw]
+	         * @return {[type]} [description]
+	         */
+	    ,	sortLayer: function () {
+				// init the tree
+			    jQuery( '.tree' ).aciTree({
+				        ajax: {
+				            url: 'json/checkbox-radio-button.json'
+				        }
+				    ,   sortable: true
+			    });
+	    	}
+
+	        /**
 			 * [drawBox Divs Creator Function]
 			 * @param  { obj } event [Use de click to begin to draw a box container]
 			 * @return { avoid }      this function doesn't return 
 			 */
 	    ,   drawBox: function( event ) {
+
+	    		// Set the colopicker
+
+            	jQuery( '.color-set' ).ColorPicker({ 
+            			color: '#0000ff'
+            		,	flat: true
+
+            		,	onShow: function ( colpkr ) {
+							jQuery( '.color-set' ).fadeIn( 500 );
+							return false;
+						}
+					,	onHide: function ( colpkr ) {
+							jQuery( '.color-set' ).fadeOut( 500 );
+							return false;
+						}
+					,	onChange: function ( hsb, hex, rgb ) {
+							jQuery( '.selected' ).css( 'backgroundColor', '#' + hex );
+						}
+        		});
 
 	    		realPosition = jQuery( '#draw-zone' ).offset();
 				yc = realPosition.top;
@@ -388,19 +422,36 @@ function ev( event ) {
 						{ header: 'Box Options' }
 
 					,	{
-								text: 'Move'
-							,	action: this.moveBox
-						}	
+								text: 'Options'
+							,	subMenu: [
+										{ header: 'Actions'}
 
-					,	{
-								text: 'Clone'
-							,	action: this.cloneBox
+									,	{
+												text: 'Move'
+											,	action: this.moveBox
+										}	
+
+									,	{
+												text: 'Clone'
+											,	action: this.cloneBox
+										}
+
+									,	{
+												text: 'Remove'
+											,	action: this.removeBox
+										}	
+
+									,	{
+												text: 'Send to back'
+											,	action: this.goBack
+										}	
+
+									,	{
+												text: 'Bring to front'
+											,	action: this.goFront
+										}	
+								]
 						}
-
-					,	{
-								text: 'Remove'
-							,	action: this.removeBox
-						}	
 
 					,	{
 								text: 'Set As'
@@ -449,7 +500,7 @@ function ev( event ) {
 				    	canvas.getContext("2d");
 				    	// draw to canvas...
 						canvas.toBlob( function ( blob ) {
-						    saveAs( blob, sessionStorage.drawname + ".png" );
+						    // saveAs( blob, sessionStorage.drawname + ".png" );
 						});
 				    }
 				}); // Don't delete
@@ -468,7 +519,7 @@ function ev( event ) {
 				,	img = '<img src="' + src + jQuery( '.selected' ).width() + 'x' + jQuery( '.selected' ).height() + '" class="img-embed" alt="" />'
 				,	iview = jQuery( '<div id="iview-' + id + '"/>' )
 				,	sld1 = jQuery( '<div data-iview:thumbnail="apps/pulsar/public/img/fnd1.jpg" data-iview:image="apps/pulsar/public/img/fnd1.jpg"/>' )
-				,	caption1 = '<div class="iview-caption" data-x="0" data-y="0" data-width="400" data-height="300" data-transition="wipeRight" data-speed="700"> <h3>The Responsive Caption</h3> This is the product that you <b><i>all have been waiting for</b></i>!<br><br>Customize this slider with just a little HTML and CSS to your very needs. Give each slider some captions to transport your message.<br><br> All in all it works on every browser (including IE6 / 7 / 8) and on iOS and Android devices! </div>'
+				,	caption1 = '<div class="iview-caption" data-x="0" data-y="0" data-width="400" data-height="300" data-transition="wipeRight" data-speed="700"> Content </div>'
 				,	sld2 = jQuery( '<div data-iview:thumbnail="apps/pulsar/public/img/fnd2.jpg" data-iview:image="apps/pulsar/public/img/fnd2.jpg"/>' )
 				,	caption2 = '<div class="iview-caption" data-x="70" data-y="70" data-transition="expandLeft">Caption Description</div>';
 
@@ -571,6 +622,22 @@ function ev( event ) {
 
 				jQuery( '.pulsar-modal' ).foundation( 'reveal', 'close' );
 
+			}
+
+			/**
+			 * Actions menu
+			 */
+
+		,	goFront: function () {
+				jQuery( '.selected' ).css({
+					zIndex: parseInt( jQuery( '.selected' ).css( 'z-index' ) ) + 1
+				});
+			}
+
+		,	goBack: function () {
+				jQuery( '.selected' ).css({
+					zIndex: parseInt( jQuery( '.selected' ).css( 'z-index' ) ) - 1
+				});
 			}
 
 			/**

@@ -4,6 +4,7 @@
 			// 'jquery' => 'jquery'
 			'gillie' => 'gillie'
 		,	'modernizr' => 'vendor/custom.modernizr'
+		,	'colorpicker' => 'colorpicker'
 		,	'pep' => 'jquery.pep'
 		,	'context' => 'context'
 		,	'mousetrap' => 'mousetrap'
